@@ -1,0 +1,75 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 50;
+}
+
+form {
+    position: fixed;
+    top: 10vh;
+    left: 65vh;
+    width: 68vh;
+    height: 50vh;
+    padding: 16px;
+    z-index: 100;
+    text-align: center;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 2vh;
+    margin-bottom: 1vh;
+}
+
+.admin-box-buttons {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+.order-box-actions {
+    margin-left: 8vh;
+}
+
+
+.btnAction {
+    margin-top: 2vh;
+    padding: 2vh;
+    color: aliceblue;
+    border: none;
+    border-radius: 2vh;
+    width: 30%;
+    cursor: pointer;
+}
+
+.blue {
+    background-color: #0d6efd;
+}
+
+.orange {
+    background-color: #fd7e14;
+}
+
+.disabled {
+    background-color: #0274d895;
+}
+
+input,
+select {
+    margin-left: 0.5vh;
+    margin-bottom: 1vh;
+    border-radius: 0.3vh;
+    border: 0.5px solid black;
+    text-align: center;
+    padding: 0.5vh;
+}
+
+select {
+    width: 65vh;
+}
+
+input {
+    width: 64vh;
+}

@@ -1,0 +1,62 @@
+<div class="register"><br>
+    <form #signupForm="ngForm" (ngSubmit)="onSignUp(signupForm)">
+        <!-- Register step 1 -->
+        <h3>Register/{{registerStatus}}</h3>
+        <div [hidden]="registerStatus === 'Step 2'">
+            <input type="text" placeholder="ID" ngModel #id="ngModel" name="id" required
+                [ngClass]="signupForm.value.id === '' && id.touched? 'error':'marginInput'">
+            <p class="p-Error" *ngIf="signupForm.value.id === '' && id.touched? 'error p-Error':''">
+                Please enter a valid ID</p>
+
+            <input type="email" placeholder="Email" ngModel #email="ngModel" name="email"
+                [ngClass]="signupForm.value.email === '' && email.touched? 'error':'marginInput'" required>
+            <p class="p-Error" *ngIf="signupForm.value.email === '' && email.touched? 'error':''">
+                Please enter a valid email</p>
+
+            <input type="password" placeholder="Password" ngModel #password="ngModel" name="password"
+                [ngClass]="signupForm.value.password === '' && password.touched? 'error':'marginInput'" required>
+            <p class="p-Error" *ngIf="signupForm.value.password === '' && password.touched? 'error':''">
+                Please enter a valid password</p>
+
+            <input type="password" placeholder="Verify Password" ngModel #verifypassword="ngModel" name="verifypassword"
+                required
+                [ngClass]="signupForm.value.verifypassword === '' && verifypassword.touched? 'error':'marginInput'">
+            <p class="p-Error" *ngIf="signupForm.value.verifypassword === '' && verifypassword.touched? 'error':''">
+                Passwords fields must match</p>
+            <button type="button" class="btnMain" (click)="onChangeStep()">Next</button>
+        </div>
+        <!-- Register/step 2 -->
+        <div [hidden]="registerStatus === 'Step 1'">
+            <select #city="ngModel" ngModel name="city" required
+                [ngClass]="signupForm.value.city === '' && city.touched? 'error':'marginSelect'">
+                <option [disabled]="city === 'Choose a city'" *ngFor="let city of citys">{{city}}</option>
+            </select>
+            <p class="p-Error" *ngIf="signupForm.value.city === '' && city.touched? 'error':''">
+                Please tell us what city you live in</p>
+            <input type="text" placeholder="Street" ngModel #street="ngModel" name="street" required
+                [ngClass]="signupForm.value.street === '' && street.touched? 'error':'marginInput'">
+            <p class="p-Error" *ngIf="signupForm.value.street === '' && street.touched? 'error':''">
+                Please tell us what street you live in</p>
+
+            <input type="text" placeholder="Full Name" ngModel #fullname="ngModel" name="fullname"
+                [ngClass]="signupForm.value.fullname === '' && fullname.touched? 'error':''" required>
+            <p class="p-Error" *ngIf="signupForm.value.fullname === '' && fullname.touched? 'error':''">
+                Please tell us your full name</p>
+
+            <input style="margin-top: 2vh;" type="text" placeholder="User Name" ngModel #userName="ngModel"
+                name="userName" [ngClass]="signupForm.value.userName === '' && userName.touched? 'error':''" required>
+            <p class="p-Error" *ngIf="signupForm.value.userName === '' && userName.touched? 'error':''">
+                Please choose a user name</p>
+
+            <button [ngClass]="signupForm.status === 'INVALID'? 'btnMain-disabled':'btnMain'"
+                [disabled]="signupForm.status === 'INVALID'">Register</button>
+        </div>
+        <div class="toggle-section">
+            <p>Already have an a account?</p>
+            <button type="button" class="toggleBTN" (click)="navigateToLogin()">Login</button>
+            <button type="button" class="toggleBTN" [hidden]="registerStatus === 'Step 1'" (click)="onChangeStep()">Go
+                Back</button>
+        </div>
+        <p class="red">{{error}}</p>
+    </form>
+</div>

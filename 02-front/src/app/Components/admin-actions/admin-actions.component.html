@@ -1,0 +1,33 @@
+<div class="backdrop">
+    <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+        <h2>Add Product</h2>
+        <!-- Product ID -->
+        <input hidden [value]=objProduct.inputId [(ngModel)]="objProduct.inputId" name="id">
+
+        <!-- Product Name -->
+        <label>Product Name:</label>       
+        <input type="text" [value]=objProduct.inputName [(ngModel)]="objProduct.inputName" name="productName">
+
+        <!-- Product Category -->
+        <label>Category:</label>     
+        <select [(ngModel)]="objProduct.inputCategory" name="category">
+            <option [disabled]="category === 'Choose Category'"
+            *ngFor="let category of categories">{{category}}
+        </option>
+        {{objProduct.inputName}}
+    </select>
+    
+    <!-- Product Image -->
+    <label>Product Image:</label>
+    <input [value]=objProduct.inputImage type="text" [(ngModel)]="objProduct.inputImage" name="image">
+
+    <!-- Product Price -->
+        <label>Price:</label>
+        <input [value]=objProduct.inputPrice [(ngModel)]="objProduct.inputPrice" name="price">
+        <div class="admin-box-buttons">
+            <button *ngIf="!addProductBTN" class="btnAction blue">Update Product</button>
+            <button *ngIf="addProductBTN" class="btnAction blue">Add Product</button>
+            <button type="button" class="btnAction orange" (click)="onToggleActions()">cancel</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,36 @@
+.container {
+    text-align: center;
+    margin-top: 4vh;
+}
+
+.about {
+    height: 76vh;
+    display: inline-flex;
+}
+
+.about-info {
+    margin-left: 2vh;
+    width: 50vh;
+    border: 1px black solid;
+    min-height: 250px;
+    box-shadow: 20px 20px 80px rgb(218, 218, 218);
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 2vh;
+    display: box;
+}
+
+h2 {
+    text-decoration: underline;
+}
+
+p {
+    margin-left: 10%;
+    width: 80%;
+}
+
+img {
+    height: 300px;
+    width: 400px;
+    max-width: 90%;
+}

@@ -1,0 +1,20 @@
+<nav class="topnav">
+    <ul>
+        <li><a routerLink="DairyCheeseEggs" routerLinkActive="active"><button type="button"
+                    (click)="onCategoryClick('DairyCheeseEggs')" routerLinkActive="orange">Dairy,Cheese &
+                    Eggs</button></a>
+        </li>
+        <li><a routerLink="FreshFruit" routerLinkActive="active"><button type="button"
+                    (click)="onCategoryClick('FreshFruit')" routerLinkActive="orange">Fresh
+                    Fruits</button></a></li>
+        <li><a routerLink="Breads&Bakery" routerLinkActive="active"><button type="button"
+                    (click)="onCategoryClick('Breads&Bakery')" routerLinkActive="orange">Breads & Bakery</button></a>
+        </li>
+        <li><a routerLink="SoftDrinks" routerLinkActive="active"><button type="button"
+                    (click)="onCategoryClick('SoftDrinks')" routerLinkActive="orange">Soft
+                    Drinks</button></a></li>
+        <!-- <li class="btn"><a><button type="button" (click)="onOpenCart()">Go To Cart</button></a>
+        </li> -->
+    </ul>
+</nav>
+<router-outlet></router-outlet>

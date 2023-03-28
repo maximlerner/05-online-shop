@@ -1,0 +1,106 @@
+.login {
+    background: linear-gradient(to top, #c9c9ff 50%, #6e6ef6 90%)no-repeat;
+    height: 78vh;
+}
+
+form {
+    text-align: center;
+    margin-left: 35%;
+    width: 70vh;
+    border: 1px black solid;
+    min-height: 250px;
+    box-shadow: 20px 20px 80px rgb(218, 218, 218);
+    background-color: white;
+    border-radius: 12px;
+    margin-top: 2vh;
+    display: box;
+}
+
+input {
+    border-radius: 1vh;
+    border: 1px solid rgb(121, 121, 121);
+    width: 88%;
+    padding: 2vh;
+}
+
+.btnMain {
+    margin-top: 2vh;
+    padding: 2vh;
+    color: aliceblue;
+    background-color: #0275d8;
+    border: none;
+    border-radius: 2vh;
+    width: 95%;
+    cursor: pointer;
+}
+
+.btnMain-disabled {
+    margin-top: 2vh;
+    padding: 2vh;
+    color: aliceblue;
+    background-color: #0274d895;
+    border: none;
+    border-radius: 2vh;
+    width: 95%;
+    cursor: pointer;
+}
+
+.toggleBTN {
+    border: none;
+    background-color: white;
+    color: blue;
+    cursor: pointer;
+}
+
+
+p {
+    margin-top: 4vh;
+    color: rgb(121, 121, 121);
+}
+
+select {
+    text-align: center;
+    width: 93.5%;
+    padding: 2vh;
+    border-radius: 1vh;
+}
+
+.error {
+    border: 1px solid red;
+}
+
+.p-Error {
+    background-color: white;
+    margin-top: 1.4vh;
+    line-height: 0.05vh;
+}
+
+.marginInput,
+.marginSelect {
+    margin-bottom: 3vh;
+}
+
+.toggle-section {
+    display: inline-flex;
+}
+
+@media only screen and (max-width: 1030px) {
+    .toggleBTN {
+        margin-top: 1.5vh;
+    }
+}
+
+@media only screen and (min-width: 1030px) {
+    .login {
+        background: linear-gradient(to top, #c9c9ff 50%, #6e6ef6 90%)no-repeat;
+        height: 85vh;
+    }
+
+    .toggleBTN {
+        margin-top: 2.5vh;
+    }
+
+    h3 {
+        margin-top: 1vh;
+    }
+}

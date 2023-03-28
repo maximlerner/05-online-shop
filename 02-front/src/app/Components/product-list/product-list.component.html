@@ -1,0 +1,14 @@
+<button type="button" class="cartBtn" (click)=showCart()>Go To Cart</button>
+<div class="container">
+    <div class="card" *ngFor="let product of products">
+        <div class="image">
+            <img src='./../../../assets/images/{{product.image}}'>
+        </div>
+        <h3>{{product.productName|shorten:32}}</h3>
+        <h3>${{product.price}}</h3>
+        <button type="button" class="btn" (click)="addItem(product.productID,product.price)">Add To Cart</button>
+    </div>
+</div>
+<!-- <app-cart (isCart)="closeCart($event)" [hidden]="!cartActive"></app-cart> -->
+<!-- <app-cart (isCart)="closeCart()" [hidden]="!cartActive"></app-cart> -->
+<app-cart (isCart)="closeCart()" *ngIf="cartActive"></app-cart>

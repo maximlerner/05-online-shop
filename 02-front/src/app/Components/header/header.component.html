@@ -1,0 +1,14 @@
+<nav class="topnav">
+  <ul>
+    <li *ngIf="userIsLogged &&  userIsAdmin === 'admin'"><a routerLink="/adminPage" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">Admin Page</a></li>
+    <li *ngIf="userIsLogged &&  userIsAdmin === 'user'"><a routerLink="/shopping-list/DairyCheeseEggs"
+        routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Shopping
+        List</a></li>
+    <li *ngIf="!userIsLogged"><a routerLink="/register" routerLinkActive="active">Register</a></li>
+    <li *ngIf="!userIsLogged"><a routerLink="/login" routerLinkActive="active">Login</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+    <li *ngIf="userIsLogged"><a style="cursor:pointer;" (click)="logout()">LogOut</a></li>
+    <li *ngIf="userIsLogged" class="name"><a>Wellcome {{name}}</a></li>
+  </ul>
+</nav>

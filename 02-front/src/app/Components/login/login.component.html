@@ -1,0 +1,27 @@
+<div class="login"><br>
+    <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+        <h3>Login</h3>
+        <!-- userName field -->
+        <input type="text" placeholder="Username" ngModel #userName="ngModel" name="userName" required
+            [ngClass]="loginForm.value.userName === '' && userName.touched? 'error':'marginInput'">
+        <p class="p-Error" *ngIf="loginForm.value.userName === '' && userName.touched? 'error p-Error':''">
+            Please enter a valid user name</p>
+
+        <!-- password field -->
+        <input type="password" placeholder="Password" ngModel #password="ngModel" name="password" required
+            [ngClass]="loginForm.value.password === '' && password.touched? 'error':'marginInput'">
+        <p class="p-Error" *ngIf="loginForm.value.password === '' && password.touched? 'error p-Error':''">
+            Please enter a valid password</p>
+        <p class="p-Error" *ngIf="!loginCorrect ">{{error}}</p>
+
+        <!-- submit section -->
+        <button [ngClass]="loginForm.status === 'INVALID'? 'btnMain-disabled':'btnMain'"
+            [disabled]="loginForm.status === 'INVALID'">Login</button>
+
+        <!-- toggle section -->
+        <div class="toggle-section">
+            <p>Dont't have an account?</p>
+            <button type="button" class="toggleBTN" (click)="navigateToRegister()">SignUp</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,102 @@
+<div class="backdrop">
+    <div class="cart-box">
+        <h2>Cart</h2>
+        <!-- Section 1 : Cart details -->
+        <div [hidden]="isOrder">
+            <div class="emty-cart" *ngIf="items.length === 0">
+                <h2 class="message">Cart is empty</h2>
+            </div>
+            <div class="items-container" *ngIf="readyToLoadItems && items.length != 0">
+                <div class="item" *ngFor="let item of items">
+                    <!-- 1) Product name -->
+                    <div class="name">
+                        <label>P.Name: {{item.productName |shorten:32}}</label>
+                    </div>
+                    <!-- 2) Product price -->
+                    <div class="price">
+                        <label>Price:{{item.pricePerItem}}</label>
+                    </div>
+                    <!-- 3) Product quantity -->
+                    <div class="quantity">
+                        <label>Quantity: {{item.quantity}}</label>
+                    </div>
+                    <!-- 4) Button for deleting item from cart  -->
+                    <button class="btnDelete" (click)="onDeleteItem(item.cartItemID)">Delete</button>
+                </div>
+            </div>
+            <!-- 5) Total cart price -->
+            <h3>Total Price: ${{totalPrice}}</h3>
+            <!-- 6) Buttons for closing cart,switch to order section and deleting all cart info and going back to shopping list  -->
+            <div class="cart-box-actions">
+                <button type="button" class="btnCart blue" (click)="onToggleCart()">Close</button>
+                <button type="button" class="btnCart green" (click)="onToggleOrder()">Go To Order</button>
+                <button type="button" class="btnCart orange" (click)="onDeleteCart()">cancel</button>
+            </div>
+        </div>
+        <!-- Section 2: Delivery form -->
+        <div [hidden]="!isOrder">
+            <form #orderForm="ngForm" (ngSubmit)="onSubmit(orderForm)">
+                <div class=items-container>
+                    <h3 style="text-decoration: underline;">Shipping details</h3>
+                    <!-- 1) City destination of the delivery -->
+                    <label>City:</label>
+                    <select ngModel #city="ngModel" name="city" required>
+                        <option [disabled]="city === 'Choose a city'" *ngFor="let city of citys">{{city}}</option>
+                    </select>
+                    <p class="p-Error" *ngIf="orderForm.value.city === '' && city.touched? 'error':''">
+                        Please tell us what city you live in</p>
+                        
+                    <!-- 2) Street destination of the delivery -->
+                    <label>Street:</label>
+                    <input type="text" ngModel #street="ngModel" name="street" required>
+                    <p class="p-Error" *ngIf="orderForm.value.street === '' && street.touched? 'error':''">
+                        Please tell us what street you live in</p>
+                        
+                    <!-- 3) Shipping date for the delivery -->
+                    <label>Shipping date:</label>
+                    <input type="date" ngModel #date="ngModel" name="date" required>
+                    <p class="p-Error" *ngIf="orderForm.value.date === '' && date.touched? 'error':''">
+                        When do you want to recive the delivery</p>
+                        <h3 style="text-decoration: underline;">Payments</h3>
+                        
+                    <!-- 4) Credit card for delivery -->
+                    <label>Credit Card:</label>
+                    <input type="number" ngModel #last4DigitsOfCreditCard="ngModel" name="last4DigitsOfCreditCard"
+                    required min="1000" max="9999">
+                    <p class="p-Error" *ngIf="orderForm.value.last4DigitsOfCreditCard === '' && last4DigitsOfCreditCard.touched? 'error':''">
+                        Please provide 4 last digits of your credit card</p>
+                        
+                    </div>
+                    <!-- 4) Actions to go back to cart or to order the items -->
+                <div class="order-box-actions">
+                    <button [ngClass]="orderForm.status === 'INVALID'? 'btnCart disabled':'btnCart blue'"
+                        [disabled]="orderForm.status === 'INVALID'">Order</button>
+                    <button type="button" *ngIf="!isInvoice" class="toggleBTN" (click)="onToggleOrder()">Go Back</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="order" [hidden]="!isOrder">
+        <div class="invoice">
+            <h1 class="invoice-header">Order</h1>
+            <button class="toggleBTN" *ngIf="isInvoice" (click)="goToShop()">Go to shop</button>
+        </div>
+        <div class="items-container">
+            <div class="item" *ngFor="let item of items">
+                <!-- 1) Product name -->
+                <div class="name">
+                    <label>P.Name: {{item.productName}}</label>
+                </div>
+                <!-- 2) Product price -->
+                <div class="price">
+                    <label>Price:{{item.pricePerItem}}</label>
+                </div>
+                <!-- 3) Product quantity -->
+                <div class="quantity">
+                    <label>Quantity: {{item.quantity}}</label>
+                </div>
+            </div>
+        </div>
+        <h2>Total price: ${{totalPrice}}</h2>
+    </div>
+</div>

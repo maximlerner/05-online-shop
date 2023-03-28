@@ -1,0 +1,29 @@
+<button type="button" class="btn blue" (click)="onAddProduct()">Add Product</button>
+<div class="container">
+    <div class="card" *ngFor="let product of products">
+        <div class="image">
+            <img src='./../../../assets/images/{{product.image}}'>
+        </div>
+        <h3>{{product.productName|shorten:32}}</h3>
+        <h3>${{product.price}}</h3>
+        <div hidden>
+            <input #productID [value]=product.productID>
+            <input #productImage [value]=product.image>
+            <input #productName [value]=product.productName>
+            <input #productCategory [value]=product.category>
+            <input type="number" #productPrice [value]=product.price>
+        </div>
+        <div class="cart-box-actions">
+            <button type="button" class="btn green" (click)="onUpdateProduct(
+                productID.value,
+                productImage.value,
+                productName.value,
+                productCategory.value,
+                productPrice.value
+                )">Edit</button>
+            <button type="button" class="btn red" (click)="onDeleteProduct(product.productID)">Delete</button>
+        </div>
+    </div>
+</div>
+<app-admin-actions [objProduct]="inputObj" [addProductBTN]="btnToggleToAdd" (isActionsForm)="CloseActions()"
+    [hidden]="!adminActionsActive"></app-admin-actions>
