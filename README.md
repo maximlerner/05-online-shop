@@ -24,7 +24,6 @@ shipment details in a new section
 * When loging in the website admin can add delete and update products.<br>
 all crud operations are made with nodejs - express backend and MongoDB database.
 
-* Customers and admin can see website statistics.
 * Customers can search products by categories and they can search products in <br> 
 a search bar.
 
